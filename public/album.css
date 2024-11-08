@@ -1,0 +1,275 @@
+/* Importar fuentes de Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@400;500;600&display=swap');
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    --color-bg: #0f0f0f;
+    --color-bg-2: #333333; /* Gris oscuro para el fondo */
+    --color: #48E; /* Azul brillante */
+    --color-secundario: #8A3FF3; /* Morado oscuro */
+    --shadow: #48E; /* Sombra con el color azul brillante */
+    background-color: var(--color-bg);
+    font-family: 'Poppins', sans-serif; /* Fuente para el contenido */
+}
+
+h1, h3 {
+    font-family: 'Playfair Display', serif; /* Fuente para los títulos */
+}
+
+div, section, body, a {
+    margin: 0;
+    padding: 0;
+}
+
+/*---------- Primera SECCION ----------*/
+
+/*H1*/
+h1 {
+    font-size: 3rem;
+    font-family: 'Playfair Display', serif;
+    background: linear-gradient(45deg, #48E, #8A3FF3); /* Gradiente de azul y morado oscuro */
+    -webkit-background-clip: text;
+    color: transparent;
+    text-align: center;
+    margin: 1.5rem 0;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+/*BARRA DE NAVEGACION*/
+.barra-deslizable {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    padding: 1rem;
+    width: 100%;
+    box-shadow: 0px 20px 17px #000f;
+    margin-bottom: 4rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background-color: var(--color-bg-2);
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-color: transparent transparent;
+}
+
+.barra-deslizable::-webkit-scrollbar {
+    height: 8px;
+}
+
+.barra-deslizable::-webkit-scrollbar-thumb {
+    background-color: transparent;
+}
+
+.nav-link {
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif; /* Fuente para los enlaces */
+    padding: 0.5rem;
+    color: #fff; /* Blanco para el texto */
+}
+
+.nav-link.active {
+    border-bottom: 2px solid var(--color);
+    color: var(--color);
+}
+
+/*ALBUMS*/
+.inicio-album {
+    display: none;
+}
+
+.album-seccion {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+    background-color: var(--color-bg);
+}
+
+.album-div {
+    padding: 10px;
+    background-color: var(--color-bg-2);
+    border-radius: 14px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.album-div h3 {
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+    color: var(--color); /* Título en azul */
+    font-family: 'Playfair Display', serif; /* Fuente para los títulos dentro de los álbumes */
+}
+
+.galeria {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 5px;
+    transition: max-height 0.3s ease; /* Mantén la transición para animación */
+    max-height: 110px; /* Altura inicial */
+    overflow: hidden;
+    transition: max-height 0.5s ease; /* Transición suave */
+}
+
+
+
+
+.galeria img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.galeria.expandido {
+    max-height: 100vh; /* Ajusta el valor a un número suficientemente grande */
+}
+
+
+.ver-mas {
+    margin-top: 10px;
+    padding: 8px 12px;
+    border: none;
+    background-color: var(--color-secundario); /* Morado oscuro para el fondo del botón */
+    color: #fff;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.ver-mas:hover {
+    background-color: #7C2AE8; /* Morado aún más oscuro al hacer hover */
+}
+
+/*---------- BORDE DE CAJA ANIMADO ----------*/
+.borde-animado-contenedor {
+    padding: 1px;
+    width: calc(100% - 7rem);
+    border-radius: 14px;
+    background-color: transparent;
+    position: relative;
+    z-index: 10;
+    overflow: hidden;
+    margin-bottom: 5rem;
+}
+
+.borde-animado-contenedor::before {
+    content: '';
+    width: 6rem;
+    height: 6rem;
+    border-radius: 50%;
+    background: radial-gradient(circle, #48E 10%, #8A3FF3 90%); /* Gradiente azul a morado oscuro */
+    position: absolute;
+    top: -3rem;
+    left: -3rem;
+    z-index: -1;
+    box-shadow: 0px 0px 40px var(--shadow);
+    animation: mover 6s linear infinite;
+}
+
+.borde-animado-contenedor::after {
+    content: '';
+    width: 6rem;
+    height: 6rem;
+    border-radius: 50%;
+    background: radial-gradient(circle, #48E 10%, #8A3FF3 90%); /* Gradiente azul a morado oscuro */
+    position: absolute;
+    top: -3rem;
+    left: -3rem;
+    z-index: -1;
+    box-shadow: 0px 0px 40px var(--shadow);
+    animation: mover2 6s linear infinite;
+}
+
+@keyframes mover {
+    0% {
+        top: -3rem;
+        left: -3rem;
+    }
+    25% {
+        top: -3rem;
+        left: calc(100% - 3rem);
+    }
+    50% {
+        top: calc(100% - 3rem);
+        left: calc(100% - 3rem);
+    }
+    75% {
+        top: calc(100% - 3rem);
+        left: -3rem;
+    }
+    100% {
+        top: -3rem;
+        left: -3rem;
+    }
+}
+
+@keyframes mover2 {
+    0% {
+        top: calc(100% - 3rem);
+        left: calc(100% - 3rem);
+    }
+    25% {
+        top: calc(100% - 3rem);
+        left: -3rem;
+    }
+    50% {
+        top: -3rem;
+        left: -3rem;
+    }
+    75% {
+        top: -3rem;
+        left: calc(100% - 3rem);
+    }
+    100% {
+        top: calc(100% - 3rem);
+        left: calc(100% - 3rem);
+    }
+}
+
+/* MODAL*/
+
+/* Modal, oculto por defecto */
+#modal {
+    display: none; /* Oculto por defecto */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); /* Fondo oscuro semitransparente */
+    z-index: 1000; /* Sobre todo el contenido */
+    align-items: center; /* Centrado vertical */
+    justify-content: center; /* Centrado horizontal */
+}
+
+/* Imagen dentro del modal */
+#modalImage {
+    max-width: 90vw;
+    max-height: 90vh;
+    object-fit: contain;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+}
+
+/* Botón de cierre */
+#closeModal {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 24px;
+    color: white;
+    cursor: pointer;
+    z-index: 1001;
+}
